@@ -18,6 +18,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        //用户已认证邮件，定义监听事件，注册监听器
+        \Illuminate\Auth\Events\Verified::class => [
+            \App\Listeners\EmailVerified::class, //监听器 使用 php artisan event:generate 生成
+        ],
     ];
 
     /**
